@@ -1,0 +1,24 @@
+{
+  "name": "com.droneup.publishing",
+  "version": "1.0.0",
+  "description": "",
+  "bin": {
+    "gitInfo": "./index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {},
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "chdir": "0.0.0",
+    "commander": "^2.11.0",
+    "git-branch": "^1.0.0",
+    "git-head": "^1.20.1",
+    "git-latest-semver-tag": "^1.0.2",
+    "lodash": "^4.17.4",
+    "simple-git": "^1.75.0"
+  }
+}
