@@ -1,6 +1,6 @@
 {
   "name": "ci-helper",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Command line tool for assisting my team with builds. Used for simplifying pipeline verification, gathering jira issues between tags, etc.",
   "bin": {
     "repoInfo": "./ci-helper.js"
