@@ -13,3 +13,7 @@ Get current branch of local repository
 Get Head commit sha of local repository
 
 	-h -p C:\Development\com.dartfleet.web
+	
+Get latest Semantic version from your local repo, useful for determining next build version
+
+	-v -p C:\Development\com.dartfleet.web
