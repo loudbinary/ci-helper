@@ -30,22 +30,22 @@ ProgramOptions.prototype.parseArgs = function (options){
                 console.log('  Examples:');
                 console.log('');
                 console.log('Get current branch of current local repository');
-                console.log("    repoInfo -b -p <local repo directory path>");
+                console.log("    ci-helper -b -p <local repo directory path>");
                 console.log('');
                 console.log('Get commit sha of current local repository');
-                console.log("    repoInfo -h -p <local repo directory path>");
+                console.log("    ci-helper -h -p <local repo directory path>");
                 console.log('');
                 console.log('Get latest semantic version of current local repository');
-                console.log("    repoInfo -v -p <local repo directory path>");
+                console.log("    ci-helper -v -p <local repo directory path>");
                 console.log('');
                 console.log('Get latest semantic version of current local repository');
-                console.log("    repoInfo -v -p <local repo directory path>");
+                console.log("    ci-helper -v -p <local repo directory path>");
                 console.log('');
                 console.log('Get all commit sha\'s since provided tag of current local repository');
-                console.log("    repoInfo -c -t v1.0.1341 -p <local repo directory path>");
+                console.log("    ci-helper -c -t v1.0.1341 -p <local repo directory path>");
                 console.log('');
                 console.log('Get all jira id\'s since provided tag of current local repository');
-                console.log("    repoInfo -c -t v1.0.1341  -j DF -p <local repo directory path>");
+                console.log("    ci-helper -c -t v1.0.1341  -j DF -p <local repo directory path>");
                 console.log('');
             })
             if (!instance.program.path && !instance.program.help && !verifyPath(instance.progrsm.path)) {
