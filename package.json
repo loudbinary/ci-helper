@@ -1,14 +1,14 @@
 {
-  "name": "com.droneup.publishing",
+  "name": "ci-helper",
   "version": "1.0.0",
-  "description": "",
+  "description": "Command line tool for assisting my team with builds. Used for simplifying pipeline verification, gathering jira issues between tags, etc.",
   "bin": {
-    "repoInfo": "./index.js"
+    "repoInfo": "./ci-helper.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Loudbinary",
   "license": "ISC",
   "devDependencies": {},
   "dependencies": {
