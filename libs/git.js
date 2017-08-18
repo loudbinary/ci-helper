@@ -7,6 +7,8 @@ const chdir = require('chdir');
 const util = require('util');
 const simpleGit = require('simple-git');
 const _ = require('lodash');
+const jira_matcher = /\d+-[A-Z]+(?!-?[a-zA-Z]{1,10})/g
+const reverse = require('reverse-string');
 
 function Git(repoPath){
     if (instance === undefined) {
@@ -24,7 +26,7 @@ Git.prototype.getHead = function (repoPath) {
             resolve(hash);
         })
     })
-}
+};
 
 Git.prototype.getLatestTag = function () {
     return new Promise ((resolve,reject)=> {
@@ -36,7 +38,7 @@ Git.prototype.getLatestTag = function () {
             })
         })
     })
-}
+};
 
 Git.prototype.getBranch = function () {
     return new Promise ((resolve,reject)=> {
@@ -48,7 +50,7 @@ Git.prototype.getBranch = function () {
             })
         })
     })
-}
+};
 
 Git.prototype.getCommits = function (repoPath,tag) {
     tag = tag + '..HEAD'
@@ -71,6 +73,36 @@ Git.prototype.getCommits = function (repoPath,tag) {
             }
         );
     })
-}
+};
+
+Git.prototype.getJiraIds = function (repoPath,tag) {
+    tag = tag + '..HEAD'
+    return new Promise((resolve,reject)=>{
+        simpleGit(repoPath).raw(
+            [
+                'log',
+                tag,
+                '--oneline',
+                '--no-abbrev-commit'
+            ], (err,results) => {
+                if (err) reject(err);
+                let newArray = _.dropRight(_.split(results,'\n',results.length));
+                let notes = newArray.map((item)=>{
+                    // Javascript has no look behind, reverse to fool it.
+                    return reverse(item.substring(item.indexOf(' '),item.length).trim())
+                });
+
+                let jiraIds = notes.map((item)=>{
+                    let results = item.match(jira_matcher);
+                    if (results) {
+                        return reverse(results.toString())
+                    }
+                })
+                jiraIds = _.uniq(jiraIds.filter((n)=> {return n != undefined}));
+                resolve(jiraIds)
+            }
+        );
+    })
+};
 
 module.exports = Git;

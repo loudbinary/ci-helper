@@ -16,7 +16,7 @@ ProgramOptions.prototype.parseArgs = function (options){
         .version(require('./../../package.json').version)
         .usage('[options] <repository_path>')
         .option('-h, --head', 'Retrieves local repo current head')
-        .option('-j --jiraIssues', 'Retrieves all JIRA Ids for commits and returns list, should be used with -c and -t only')
+        .option('-j --jiraProjectId [jiraProjectId]', 'Retrieves all JIRA Ids for commits from Tag to head and returns list, should be used with -c and -t only')
         .option('-v, --versionTag', 'Retrieves local repo latest semver tag')
         .option('-b --branch', 'Retrieves local repository current branch')
         .option('-c, --commits', 'Retrieves all commits since supplied tag supplied with -t option')
@@ -43,7 +43,7 @@ ProgramOptions.prototype.parseArgs = function (options){
             console.log("    repoInfo -c -t v1.0.1341 -p <local repo directory path>");
             console.log('');
             console.log('Get all jira id\'s since provided tag of current local repository');
-            console.log("    repoInfo -c -t v1.0.1341  -j -p <local repo directory path>");
+            console.log("    repoInfo -c -t v1.0.1341  -j DF -p <local repo directory path>");
             console.log('');
         })
     if (!instance.program.path && !instance.program.help && !verifyPath(instance.progrsm.path)) {

@@ -11,7 +11,7 @@ exports.getHead = function(repoPath){
         .catch((err)=>{
             throw new Error(err);
         })
-}
+};
 
 exports.getLatestTag = function(repoPath) {
     git = new Git(repoPath);
@@ -23,7 +23,7 @@ exports.getLatestTag = function(repoPath) {
         .catch((err)=>{
             throw new Error(err);
         })
-}
+};
 
 exports.getBranch = function(repoPath) {
     git = new Git(repoPath);
@@ -35,7 +35,7 @@ exports.getBranch = function(repoPath) {
         .catch((err)=>{
             throw new Error(err);
         })
-}
+};
 
 exports.getCommits = function(tag,repoPath) {
     git = new Git(repoPath);
@@ -47,4 +47,16 @@ exports.getCommits = function(tag,repoPath) {
         .catch((err)=>{
             throw new Error(err);
         })
-}
+};
+
+exports.getJiraIds = function(tag,repoPath) {
+    git = new Git(repoPath);
+    git.getJiraIds(repoPath,tag)
+        .then((results)=>{
+            console.log(results);
+            process.exit(0)
+        })
+        .catch((err)=>{
+            throw new Error(err);
+        })
+};
