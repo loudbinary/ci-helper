@@ -33,9 +33,16 @@ exports.run = function(po,pa) {
                 programActions.getJiraIds(programOptions.program.tag,programOptions.program.path);
                 resolve(null);
                 break;
+            default:
+                programOptions.program.outputHelp(displayHelp);
+                process.exit(0);
+                break;;
         }
     })
 
+    function displayHelp(text) {
+        return text;
+    }
 };
 
 
